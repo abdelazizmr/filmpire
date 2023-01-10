@@ -3,15 +3,20 @@ import { Box } from '@mui/system'
 import MovieCard from './MovieCard'
 import Spinner from '../helpers/Spinner'
 import RnadomMovie from './RnadomMovie'
+import { useMoviesContext } from "../Context"
 
-const Movies = ({movies}) => {
+const Movies = () => {
+
+  const { movies } = useMoviesContext()
 
   const random = Math.floor(Math.random()*movies.length)
 
   const randomMovie = movies[random]
 
-
+  
   console.log(movies)
+
+
   return (
     <Box
     className='movies-container'

@@ -1,6 +1,7 @@
-import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import AddToQueueIcon from '@mui/icons-material/AddToQueue';
+import popular from '../assets/popular.png';
+import toprated from '../assets/topRated.png';
+import upcoming from '../assets/upcoming.png';
+import favourites from "../assets/favourites.png"
 import  action  from "../assets/action.png"
 import  adventure  from "../assets/adventure.png"
 import  documentary  from "../assets/documentary.png"
@@ -14,11 +15,15 @@ import  romance  from "../assets/romance.png"
 import  sfiction  from "../assets/sfiction.png"
 import  war  from "../assets/war.png"
 
+export const favs = [
+   { title : 'Favourites', icon : favourites }
+]
+
 
 export const categories = [
-   { title : 'Popular', icon : <LocalMoviesIcon/> },
-   { title : 'Top Rated', icon : <StarOutlineIcon /> },
-   { title : 'Upcoming', icon : <AddToQueueIcon /> }
+   { title : 'Popular', icon : popular },
+   { title : 'Top Rated', icon : toprated },
+   { title : 'Upcoming', icon : upcoming }
 ]
 
 export const genres =  [

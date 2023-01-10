@@ -7,8 +7,12 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const NexPage = ({toggleFeed,category,genre,genreId}) => {
+import { useMoviesContext } from "../Context"
 
+const NexPage = () => {
+
+
+    const {setMovies,category,genre,genreId} = useMoviesContext()
 
     const [page, setPage] = useState(1)
 
@@ -22,7 +26,7 @@ const NexPage = ({toggleFeed,category,genre,genreId}) => {
         if (genre === ''){ // bring categories on page changinf
           const getMovies = async(c)=>{
             const {data} = await axios.get(`https://api.themoviedb.org/3/movie/${c}?api_key=f012db64b65577ba779bbf1e9b76d451&language=en-US&page=${page}`)
-            toggleFeed(data.results)
+            setMovies(data.results)
         }
           const q = category.toLowerCase().replace(' ','_')
           getMovies(q)
@@ -34,7 +38,7 @@ const NexPage = ({toggleFeed,category,genre,genreId}) => {
         const getMovies = async(id)=>{
 
               const {data} = await axios.get(`https://api.themoviedb.org/3/discover/movie?with_genres=${id}&page=${page}&api_key=f012db64b65577ba779bbf1e9b76d451`)
-              toggleFeed(data.results)
+              setMovies(data.results)
             }
 
             getMovies(genreId)

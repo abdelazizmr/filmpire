@@ -1,63 +1,52 @@
-import * as React from 'react';
+import React from 'react'
 import "./App.css"
+//dependencies
 import {Box, Drawer , Toolbar }from '@mui/material';
-//!components
-import Movies from "./components/Movies"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+//pages
+import Feed from "./pages/Feed"
+import MovieDetails from "./pages/MovieDetails"
+import ErrorPage from "./pages/ErrorPage"
+
+//components
 import SideBar from './components/SideBar';
 import Header from './components/Header';
-import NexPage from './components/NextPage';
-import { useState } from 'react';
+//context
 
-const  App = () =>{
-  
-  const [feed, setFeed] = useState([])
-  const [category, setCategory] = useState('Popular')
-  const [genre, setGenre] = useState('')
-  const [genreId, setgenreId] = useState(0)
-  const [search, setSearch] = useState('')
+import Context from './Context';
+
+const App = () => {
+
   
 
-
-
-
-  //when clicking on side bar categories and fetching from api it changes the movie feed
-  const toggleFeed = (newfeed)=>{
-    setFeed(newfeed)
-  }
 
 
   return (
-    <Box >
-      
-      <Header
-      toggleFeed={toggleFeed} />
-      
-      <Drawer variant="permanent" className='sidebar-parent'>
-        <Toolbar />
-        <SideBar 
-        toggleFeed={toggleFeed} 
-        category={category} 
-        setCategory={setCategory} 
-        genre={genre} 
-        setGenre={setGenre}
-        genreId={genreId}
-        setgenreId={setgenreId}  />
+    <BrowserRouter>
+       <Context>
 
-      </Drawer>
-      <Movies component="main" movies={feed} >
-        <Toolbar />
       
-      </Movies>
+        <Box >
+          
+          <Header />
+          
+          <Drawer variant="permanent" className='sidebar-parent'>
+            <Toolbar />
+            <SideBar />
 
-        <NexPage 
-        toggleFeed={toggleFeed} 
-        category={category} 
-        genre={genre}
-        genreId={genreId} />
+          </Drawer>
 
-    </Box>
-  );
+          <Routes>
+            <Route path="/" element={<Feed />} />
+            <Route path="/movie:id" element={<MovieDetails />} />
+            <Route path="/*" element={<ErrorPage />} />
+          </Routes>
+
+        </Box>
+
+      </Context>
+    </BrowserRouter>
+  )
 }
-
 
 export default App

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Input } from '@mui/material'
 import axios from 'axios';
+import { useMoviesContext } from "../Context"
 
 
-const SearchBar = ({toggleFeed}) => {
+const SearchBar = () => {
 
+
+  const { setMovies } = useMoviesContext()
 
   const [search , setSearch] = useState('')
 
@@ -21,7 +24,7 @@ const SearchBar = ({toggleFeed}) => {
 
     const searchMovies = async (q)=>{
       const {data} = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${q}&page=1&api_key=f012db64b65577ba779bbf1e9b76d451`)
-      toggleFeed(data.results)
+      setMovies(data.results)
     }
 
   return (

@@ -1,22 +1,26 @@
 import React from 'react'
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import {Toolbar,AppBar,Link,Typography} from '@mui/material';
+import {Toolbar,AppBar} from '@mui/material';
 import SearchBar from './SearchBar';
+import { Link } from 'react-router-dom';
 import  logo  from "../assets/logo.png"
 
 
 
-const Header = ({toggleFeed}) => {
+const Header = () => {
+
+
+
   return (
 
     <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar className='flex justify-between p-3'>
           <Link to="/">
-          <img src={logo}alt="filmpire" className='bg-white w-20' />
+            <img src={logo}alt="filmpire" className='logo' />
           </Link>
           
           <header className='flex justify-between gap-5'>
-            <SearchBar toggleFeed={toggleFeed} />
+            <SearchBar  />
             <button onClick={()=>console.log('dark mode')}><DarkModeIcon /></button>
           </header>
         </Toolbar>

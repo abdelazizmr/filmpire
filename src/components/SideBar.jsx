@@ -1,14 +1,14 @@
 import { Box,ListItemText,ListItemIcon,ListItemButton,ListItem,Divider,List,Typography } from '@mui/material';
-import {categories, genres} from "../cache/Categories"
+import { categories, genres , favs } from "../cache/Categories"
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import {data} from "../cache/data"
+import { useMoviesContext } from "../Context"
 
 
-const SideBar = ({toggleFeed,category,setCategory,genre,setGenre,genreId,setgenreId}) => {
+const SideBar = () => {
 
 
-
+  const {setMovies , category , setCategory,genre,setGenre,genreId,setgenreId} = useMoviesContext()
 
 
   const handleGenre = (newgenre,id)=>{
@@ -30,12 +30,12 @@ const SideBar = ({toggleFeed,category,setCategory,genre,setGenre,genreId,setgenr
     const getMovies = async(id)=>{
 
       const {data} = await axios.get(`https://api.themoviedb.org/3/discover/movie?with_genres=${id}&page=1&api_key=f012db64b65577ba779bbf1e9b76d451`)
-      toggleFeed(data.results)
+      setMovies(data.results)
     }
 
     getMovies(genreId)
 
-   // toggleFeed(data.results)
+   // setMovies(data.results)
 
   },[genre])
 
@@ -47,12 +47,12 @@ const SideBar = ({toggleFeed,category,setCategory,genre,setGenre,genreId,setgenr
       const q = category.toLowerCase().replace(' ','_')
 
       if (q === ''){
-        console.log('walo')
+       // console.log('walo')
         return 
       }
 
       const {data} = await axios.get(`https://api.themoviedb.org/3/movie/${q}?api_key=f012db64b65577ba779bbf1e9b76d451&language=en-US&page=1`)
-      toggleFeed(data.results)
+      setMovies(data.results)
     }
 
     getMovies(category)
@@ -65,6 +65,22 @@ const SideBar = ({toggleFeed,category,setCategory,genre,setGenre,genreId,setgenr
 
   return (
     <Box sx={{ overflow: 'auto' }} className="sidebar">
+        <List>
+            <Typography sx={{textAlign:'center',opacity:'0.7',margin:'10px 0px'}}>Favourites</Typography>
+            {favs.map((f, index) => (
+              <ListItem key={index} disablePadding sx={{mb:'5px'}}>
+                <ListItemButton 
+                onClick={()=>console.log('add fav movie')} 
+                selected={category === f.title && true}>
+                  <ListItemIcon>   
+                    <img src={f.icon} alt={f.title} width="25px" height="25px" />
+                  </ListItemIcon>
+                  <ListItemText primary={f.title} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
           <List>
             <Typography sx={{textAlign:'center',opacity:'0.7',margin:'10px 0px'}}>Categories</Typography>
             {categories.map((c, index) => (
@@ -72,8 +88,8 @@ const SideBar = ({toggleFeed,category,setCategory,genre,setGenre,genreId,setgenr
                 <ListItemButton 
                 onClick={()=>handleCategory(c.title)} 
                 selected={category === c.title && true}>
-                  <ListItemIcon>
-                    {c.icon}
+                  <ListItemIcon>   
+                    <img src={c.icon} alt={c.name} width="30px" height="30px" />
                   </ListItemIcon>
                   <ListItemText primary={c.title} />
                 </ListItemButton>
