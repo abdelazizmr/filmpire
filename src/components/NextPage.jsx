@@ -12,7 +12,7 @@ import { useMoviesContext } from "../Context"
 const NexPage = () => {
 
 
-    const {setMovies,category,genre,genreId} = useMoviesContext()
+    const {setMovies,category,genre,genreId,darkmode} = useMoviesContext()
 
     const [page, setPage] = useState(1)
 
@@ -67,6 +67,7 @@ const NexPage = () => {
         onChange={(e,value)=>setPage(value)}
         renderItem={(item) => (
           <PaginationItem
+          sx={{backgroundColor : darkmode && 'gray', color : darkmode && 'white'}}
             slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
             {...item}
           />

@@ -3,23 +3,41 @@ import { categories, genres , favs } from "../cache/Categories"
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useMoviesContext } from "../Context"
-
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useNavigate } from 'react-router-dom';
 
 const SideBar = () => {
 
+  const navigate = useNavigate()
 
-  const {setMovies , category , setCategory,genre,setGenre,genreId,setgenreId} = useMoviesContext()
+  const [gotoFavs, setgotoFavs] = useState(false)
+
+  const {setMovies , category , setCategory,genre,setGenre,genreId,setgenreId , showSideBar , setshowSideBar , darkmode} = useMoviesContext()
 
 
   const handleGenre = (newgenre,id)=>{
+    navigate('/')
     setGenre(newgenre)
     setgenreId(id)
     setCategory('')
+    setgotoFavs(false)
+    setshowSideBar(false)
   }
 
   const handleCategory = (newCategory)=>{
+    navigate('/')
     setCategory(newCategory)
     setGenre('')
+    setgotoFavs(false)
+    setshowSideBar(false)
+  }
+
+  const handleFavs = ()=>{
+    navigate('/favourites')
+    setgotoFavs(true)
+    setGenre('')
+    setCategory('')
+    setshowSideBar(false)
   }
 
 
@@ -63,17 +81,19 @@ const SideBar = () => {
 
   },[category])
 
+ // console.log(showSideBar);
+
   return (
-    <Box sx={{ overflow: 'auto' }} className="sidebar">
+    <Box sx={{backgroundColor: darkmode && 'black', color: darkmode && 'white', overflow: 'auto', left: showSideBar ? '0px !important' : '-190px !important' }} className="sidebar">
         <List>
             <Typography sx={{textAlign:'center',opacity:'0.7',margin:'10px 0px'}}>Favourites</Typography>
             {favs.map((f, index) => (
               <ListItem key={index} disablePadding sx={{mb:'5px'}}>
                 <ListItemButton 
-                onClick={()=>console.log('add fav movie')} 
-                selected={category === f.title && true}>
+                onClick={()=>handleFavs()}
+                selected={gotoFavs} >
                   <ListItemIcon>   
-                    <img src={f.icon} alt={f.title} width="25px" height="25px" />
+                    <FavoriteIcon style={{filter :darkmode && 'invert(1)'}}  />
                   </ListItemIcon>
                   <ListItemText primary={f.title} />
                 </ListItemButton>
@@ -89,7 +109,7 @@ const SideBar = () => {
                 onClick={()=>handleCategory(c.title)} 
                 selected={category === c.title && true}>
                   <ListItemIcon>   
-                    <img src={c.icon} alt={c.name} width="30px" height="30px" />
+                    <img src={c.icon} alt={c.name} style={{filter :darkmode && 'invert(1)'}} width="30px" height="30px" />
                   </ListItemIcon>
                   <ListItemText primary={c.title} />
                 </ListItemButton>
@@ -105,7 +125,7 @@ const SideBar = () => {
                 onClick={()=>handleGenre(g.name,g.id)}
                 selected={genre === g.name && true}>
                   <ListItemIcon>
-                    <img src={g.icon} alt={g.name} width="30px" height="30px" />
+                    <img src={g.icon} alt={g.name} width="30px" height="30px" style={{filter :darkmode && 'invert(1)'}}  />
                   </ListItemIcon>
                   <ListItemText primary={g.name} />
                 </ListItemButton>
