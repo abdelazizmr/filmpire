@@ -2,6 +2,7 @@ html,body{
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+  
 }
 
 *{
@@ -130,6 +131,7 @@ body::-webkit-scrollbar-thumb ,.sidebar::-webkit-scrollbar  {
     }
     .movies-container,.error{
         margin: 50px 20px !important;
+       
     }
    
     .toolBar{
