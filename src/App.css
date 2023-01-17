@@ -129,8 +129,8 @@ body::-webkit-scrollbar-thumb ,.sidebar::-webkit-scrollbar  {
         background-color: #eaeaea;
         /* overflow: scroll !important; */
     }
-    .movies-container,.error{
-        margin: 50px 20px !important;
+    .movies-container{
+        margin: 50px 20px 0px 20px !important;
        
     }
    
@@ -138,7 +138,7 @@ body::-webkit-scrollbar-thumb ,.sidebar::-webkit-scrollbar  {
         display: none !important;
     }
     .error{
-        margin: 65px 20px !important;
+        margin: 65px 20px 0px 20px !important;
         color : black
     }
 

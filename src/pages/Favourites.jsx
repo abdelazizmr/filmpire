@@ -18,7 +18,7 @@ const Favourites = () => {
         flexWrap="wrap"
         justifyContent="center"
         alignItems="center" 
-        sx={{ flexGrow: 1, p: 3 ,margin:'100px 0px 10px 250px'}}>
+        sx={{ flexGrow: 1, p: 3 ,margin:'100px 0px 0px 250px'}}>
             {favMovies?.reverse().map((movie,index)=>(
                 <MovieCard movie={movie} key={index} />
             ))}

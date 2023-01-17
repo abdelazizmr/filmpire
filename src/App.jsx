@@ -30,7 +30,7 @@ const App = () => {
      
 
       
-        <Box sx={{backgroundColor: darkmode && 'black',height:'100%'}} >
+        <Box sx={{backgroundColor: darkmode && 'black',paddingBottom:'80px',height:'100%'}} >
           
           <Header />
           
