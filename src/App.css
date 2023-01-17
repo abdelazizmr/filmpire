@@ -103,7 +103,7 @@ body::-webkit-scrollbar-thumb ,.sidebar::-webkit-scrollbar  {
     padding: 10px;
 }
 .error{
-    margin: 250px 20px 20px 250px !important;
+    margin: 80px 20px 20px 250px !important;
     color : black
 }
 
