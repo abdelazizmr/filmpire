@@ -5,9 +5,12 @@ import Spinner from '../helpers/Spinner'
 const RnadomMovie = ({movie}) => {
 
   
+
      const url = movie['backdrop_path'] !== null ? `https://image.tmdb.org/t/p/w500/${movie['backdrop_path']}` : 'http://via.placeholder.com/300'
 
-     console.log('random movie',movie);
+    
+
+
 
      if(!movie){
       retrun (
@@ -22,6 +25,8 @@ const RnadomMovie = ({movie}) => {
       <div 
       className='randomMovie' 
       style={{background:`url(${url})`}}>
+
+        <div className='overlay'></div>
 
 
         <h2 className='title'>

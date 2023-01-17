@@ -15,6 +15,7 @@ const SideBar = () => {
   const {setMovies , category , setCategory,genre,setGenre,genreId,setgenreId , showSideBar , setshowSideBar , darkmode} = useMoviesContext()
 
 
+   // handle genre change 
   const handleGenre = (newgenre,id)=>{
     navigate('/')
     setGenre(newgenre)
@@ -24,6 +25,7 @@ const SideBar = () => {
     setshowSideBar(false)
   }
 
+   // handle category change 
   const handleCategory = (newCategory)=>{
     navigate('/')
     setCategory(newCategory)
@@ -32,6 +34,7 @@ const SideBar = () => {
     setshowSideBar(false)
   }
 
+  // handle favourite movies
   const handleFavs = ()=>{
     navigate('/favourites')
     setgotoFavs(true)
@@ -53,8 +56,6 @@ const SideBar = () => {
 
     getMovies(genreId)
 
-   // setMovies(data.results)
-
   },[genre])
 
  
@@ -65,7 +66,6 @@ const SideBar = () => {
       const q = category.toLowerCase().replace(' ','_')
 
       if (q === ''){
-       // console.log('walo')
         return 
       }
 
@@ -81,12 +81,11 @@ const SideBar = () => {
 
   },[category])
 
- // console.log(showSideBar);
 
   return (
     <Box sx={{backgroundColor: darkmode && 'black', color: darkmode && 'white', overflow: 'auto', left: showSideBar ? '0px !important' : '-190px !important' }} className="sidebar">
         <List>
-            <Typography sx={{textAlign:'center',opacity:'0.7',margin:'10px 0px'}}>Favourites</Typography>
+            <Typography sx={{textAlign:'center',opacity:'0.7',margin:'10px 0px'}}>Watchlist</Typography>
             {favs.map((f, index) => (
               <ListItem key={index} disablePadding sx={{mb:'5px'}}>
                 <ListItemButton 

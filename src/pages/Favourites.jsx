@@ -5,7 +5,7 @@ import MovieCard from "../components/MovieCard"
 
 const Favourites = () => {
 
-    const { favMovies } = useMoviesContext()
+    const { favMovies, darkmode } = useMoviesContext()
 
   return (
     <>
@@ -25,7 +25,7 @@ const Favourites = () => {
         </Box>
     </>
     : 
-    <h2 className='error' >You didn't add any favourite movies !😔</h2>}
+    <h2 className='error' style={{color:darkmode && 'white',height:'100vh',backgroundColor:darkmode && 'black'}} >You didn't add any favourite movies !😔</h2>}
    
     </>
   )

@@ -12,6 +12,8 @@ const RecommendedMovies = ({id}) => {
 
     const { darkmode } = useMoviesContext()
 
+
+    //recommended movies based on selected movie
     useEffect(()=>{
         const getRecommendedMovies  = async()=>{
             const {data} = await axios.get(`
@@ -31,7 +33,7 @@ const RecommendedMovies = ({id}) => {
 
     },[id])
 
- //   console.log(recommendedMovies)
+
 
 
   return (

@@ -5,8 +5,6 @@ import './index.css'
 import Context, { useMoviesContext } from './Context';
 
 
-console.clear()
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Context>
 

@@ -27,14 +27,16 @@ const SearchBar = () => {
       
     }
 
+
+    // searching for a movie by title
     const searchMovies = async (q)=>{
       const {data} = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${q}&page=1&api_key=f012db64b65577ba779bbf1e9b76d451`)
       setMovies(data.results)
-      console.log('results for search',data.results)
+      //console.log('results for search',data.results)
       setSearch('')
     }
 
-    console.log(showSearch)
+ 
 
   return (
     <form display="flex gap-1" onSubmit={(e)=>handleSubmit(e)} style={{display:'flex',gap:'5px'}} >

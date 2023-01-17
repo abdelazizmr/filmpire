@@ -9,6 +9,8 @@ const  Feed = () =>{
   
   const { movies } = useMoviesContext()
 
+  //Feed page contains movies being displayed
+
   return (
 
     <>

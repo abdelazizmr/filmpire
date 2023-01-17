@@ -16,7 +16,7 @@ import  sfiction  from "../assets/sfiction.png"
 import  war  from "../assets/war.png"
 
 export const favs = [
-   { title : 'Favourites', icon : favourites }
+   { title : 'Watchlist', icon : favourites }
 ]
 
 

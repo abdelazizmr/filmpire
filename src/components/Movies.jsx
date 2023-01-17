@@ -14,7 +14,6 @@ const Movies = () => {
   const randomMovie = movies[random]
 
   
-  console.log(movies)
 
   if (movies?.length === 0){
     return(

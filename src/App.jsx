@@ -30,11 +30,12 @@ const App = () => {
      
 
       
-        <Box sx={{backgroundColor: darkmode && 'black'}} >
+        <Box sx={{backgroundColor: darkmode && 'black',height:'100vh'}} >
           
           <Header />
           
-          <Drawer variant="permanent" className='sidebar-parent' sx={{backgroundColor: darkmode && 'black !important'}}>
+          <Drawer variant="permanent" className='sidebar-parent' 
+          sx={{backgroundColor: darkmode && 'black !important'}}>
             <Toolbar className='toolBar' />
             <SideBar />
 

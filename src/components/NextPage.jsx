@@ -16,10 +16,10 @@ const NexPage = () => {
 
     const [page, setPage] = useState(1)
 
-    console.table({page,category,genre})
+    // console.table({page,category,genre})
 
  
-
+    //when requesting for another page it looks for which genre or category is requested
     useEffect(()=>{
    
         //console.log('page : ',page)
@@ -52,10 +52,6 @@ const NexPage = () => {
     },[page])
 
 
-    // useEffect(()=>{
-    //     setPage(1)
-    //     console.log('wazbi');
-    // },[category])
 
 
   return (

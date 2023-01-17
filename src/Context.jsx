@@ -31,12 +31,12 @@ const Context = ({children}) => {
 
 
         if (fm === null || fm?.length === 0){
-            console.log('nothing in localstorage')
+            //console.log('nothing in localstorage')
             return
         }
         setfavMovies(JSON.parse(fm))
 
-        console.log('fav movies from ls',JSON.parse(fm))
+       // console.log('fav movies from ls',JSON.parse(fm))
 
     },[])
 
@@ -49,14 +49,14 @@ const Context = ({children}) => {
         console.log('added',m);
         localStorage.setItem('favMovies',JSON.stringify(m))
         setfavMovies(m)
-        console.log('added to local storage')
+        //console.log('added to local storage')
     }
     // removing a movie from ls
     const removeFromFavourites = (id)=>{
         const m = favMovies.filter(movie=>movie.id !== id)
         localStorage.setItem('favMovies',JSON.stringify(m))
         setfavMovies(m)
-        console.log('removed from localstorage')
+       // console.log('removed from localstorage')
     }
 
 

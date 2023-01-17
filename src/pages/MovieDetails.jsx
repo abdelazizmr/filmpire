@@ -58,7 +58,7 @@ const MovieDetails = () => {
   const poster = `https://image.tmdb.org/t/p/w500/${movie?.['poster_path']}`
 
 
-  //to match the genres and grab also the pictures from cache/categpries
+  //to match the genres and grab also the pictures from cache/categories
   const matchedGenres = ()=>{
     const genresIds = movie?.genres?.map(genre => genre.id)
 
@@ -79,6 +79,7 @@ const MovieDetails = () => {
 
   }
 
+  //setting the add to favourite button
   const handleAddFavMovie  = ()=>{
     if(added === true){
       setAdded(false)
@@ -89,7 +90,7 @@ const MovieDetails = () => {
     addToFavourites(movie)
   }
 
- console.log(movie)
+//  console.log(movie)
 
   if (loading){
     return (
@@ -142,9 +143,15 @@ const MovieDetails = () => {
 
         <div className="links">
              <a className='link' href={`${movie?.homepage}`} target="_blank" >Watch Movie</a>
-          <a className='link' href={`https://www.imdb.com/title/${movie?.imdb_id}/`} target="_blank" >Watch Trailer</a>
+          <a 
+          className='link' 
+          href={`https://www.imdb.com/title/${movie?.imdb_id}/`} 
+          target="_blank" >Watch Trailer</a>
           <button className='link' onClick={()=>handleAddFavMovie()}>
-            Add to Favourites <span><FavoriteIcon style={{color : added ? 'red' : 'white'}} /></span>
+            Add to watchlist 
+            <span>
+              <FavoriteIcon style={{color : added ? 'red' : 'white'}} />
+            </span>
           </button>
           <Link className='link' to="/">Go Back</Link>
         </div>
